@@ -20,7 +20,7 @@ class Protocol:
 
 	@classmethod
 	def commentMax(cls, msg):
-		print(":{}".format(msg))
+		print(": {}".format(msg), flush=True)
 
 	@classmethod
 	def readInput(cls):
@@ -130,3 +130,5 @@ class Protocol:
 t, obj = Protocol.readInput()
 print(obj)
 print(t)
+print("ANT_NEW 4")
+Protocol.comment("test")
