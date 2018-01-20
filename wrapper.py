@@ -7,8 +7,7 @@ import platform
 
 sys.stdout.flush()
 
-# the prod server is not on arch
-DEBUG = platform.linux_distribution()[0] == "arch"
+
 
 
 class Protocol:
