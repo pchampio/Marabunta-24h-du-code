@@ -44,8 +44,6 @@ class Protocol:
 
 		return [name, obj]
 
-		# return data
-
 	@classmethod
 	def readAnt(cls):
 		line = sys.stdin.readline().split()
