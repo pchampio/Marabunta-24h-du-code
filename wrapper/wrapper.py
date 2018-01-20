@@ -96,8 +96,7 @@ class Protocol:
 				dist = int(dist)
 				amount = int(amount)
 				ant.setSeeNest(ident, zone, dist, amount)
-			else:
-				cls.comment("unknow ant command")
+
 
 			line = sys.stdin.readline().split()
 		return ant
@@ -126,6 +125,8 @@ class Protocol:
 			elif cmd == 'ANT_IN':
 				typ, m1, m2 = [int(v) for v in args]
 				nest.setAntIn(typ, m1, m2)
+
+			line = sys.stdin.readline().split()
 
 		return ant
 
