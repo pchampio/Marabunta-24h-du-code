@@ -10,7 +10,6 @@ class Protocol:
 	@classmethod
 	def exit(cls):
 		print("END")
-		exit()
 
 	# @staticmethod
 	@classmethod
