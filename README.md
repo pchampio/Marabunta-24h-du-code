@@ -83,3 +83,21 @@ By default the value of the ant.
 Change the ant's memory  
 @param m0 : 1st byte  
 @param m1 : 2nd byte  
+
+# UTILS
+
+`compareKey(key,array,operator, value)`
+
+compare key in an array of dict. value operator .....
+@param key : key to compare
+@param array : array to use
+@param operator : operator (see python doc)
+@param value : value to compare
+
+
+	
+`minMaxKey(key,array,func)`
+Apply function on key of an array of dict. Only tested for min & max
+@param key : key to filter on
+@param array : array to use
+@param func : function to apply
