@@ -76,11 +76,11 @@ def antIA(ant):
 				ant.commitMemory()
 				return
 
-		if nestsFriendly:
+		if nestsFriendly and len(phs) == 0:
 			distance = minMaxKey("dist", nestsFriendly, min)
 
 			if distance["dist"] > DISTANCE_NEED_PUT_PH:
-				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP nest" + str(idPathStart))
+				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP nest " + str(idPathStart))
 				ant.putPheromone(idPathStart)
 				#  idPathStart += 1
 				#  ant.setMemory(idPathStart, gotFood)
