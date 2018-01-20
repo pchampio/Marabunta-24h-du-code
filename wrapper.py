@@ -20,12 +20,6 @@ class Protocol:
 	@classmethod
 	def readInput(cls):
 		firstLine = input()
-
-		# while(not firstLine):
-			# firstLine = input()
-
-		#  print(firstLine)
-		#  print("==\n\n")
 		name = firstLine.split()[1]
 
 		obj = None
