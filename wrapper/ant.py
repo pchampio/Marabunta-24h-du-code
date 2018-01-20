@@ -19,7 +19,7 @@ class Ant:
 		self.arrSeeFood = []
 
 	def __str__(self):
-		return "m1 : " + str(self.m1) + "\nm2 : " + str(self.m2) + "\ntype : " + str(self.type) + "\nstamina : " + str(self.stamina) + "\nfood : " + str(self.food) + "\nisAttacked? : " + str(self.isAttacked) + "\nsee Pheromone : " + str(self.arrSeePheromone) + "\nsee Ant : " + str(self.arrSeeAnt) + "\nSee Nest : " + str(self.arrSeeNest) + "\nSee Food : " + str(self.arrSeeFood) + "\n"  
+		return "m1 : " + str(self.m1) + "\nm2 : " + str(self.m2) + "\ntype : " + str(self.type) + "\nstamina : " + str(self.stamina) + "\nfood : " + str(self.food) + "\nisAttacked? : " + str(self.isAttacked) + "\nsee Pheromone : " + str(self.arrSeePheromone) + "\nsee Ant : " + str(self.arrSeeAnt) + "\nSee Nest : " + str(self.arrSeeNest) + "\nSee Food : " + str(self.arrSeeFood) + "\n"
 
 	## Informations
 
@@ -54,40 +54,40 @@ class Ant:
 	## Actions
 
 	def explore(self):
-		print "EXPLORE\n"
+		print ("EXPLORE\n")
 
 	def turn(self, angle):
-		print "TURN " + str(angle) + "\n"
+		print ("TURN " + str(angle) + "\n")
 
 	def moveTo(self, uniq):
-		print "MOVE_TO " + str(uniq) + "\n"
+		print ("MOVE_TO " + str(uniq) + "\n")
 
 	def putPheromone(self, t):
-		print "PUT_PHEROMONE " + str(type) + "\n"
-	
+		print ("PUT_PHEROMONE " + str(type) + "\n")
+
 	def changePheromone(self, uniq, t):
-		print "CHANGE_PHEROMONE " + str(uniq) + " " + str(t) + "\n"
+		print ("CHANGE_PHEROMONE " + str(uniq) + " " + str(t) + "\n")
 
 	def rechargePheromone(self, uniq):
-		print "RECHARGE_PHEROMONE " + str(uniq) + "\n"
+		print ("RECHARGE_PHEROMONE " + str(uniq) + "\n")
 
 	def collect(self, uniq, quantity):
-		print "COLLECT " + str(uniq) + " " + str(quantity) + "\n"
+		print ("COLLECT " + str(uniq) + " " + str(quantity) + "\n")
 
 	def doTropha(self, uniq, quantity):
-		print "DO_THROPHALLAXIS " + str(uniq) + " " + str(quantity) + "\n"
-	
+		print ("DO_THROPHALLAXIS " + str(uniq) + " " + str(quantity) + "\n")
+
 	def eat(self, quantity):
-		print "EAT " + str(quantity) + "\n"
+		print ("EAT " + str(quantity) + "\n")
 
 	def nest(self, uniq):
-		print "NEST " + str(uniq) + "\n"
+		print ("NEST " + str(uniq) + "\n")
 
 	def attack(self, uniq, strength):
-		print "ATTACK " + str(uniq) + " " + str(strength) + "\n"
+		print ("ATTACK " + str(uniq) + " " + str(strength) + "\n")
 
 	def suicide(self):
-		print "SUICIDE\n"
+		print ("SUICIDE\n")
 
 	def memory(self, m0, m1):
-		print "SET_MEMORY " + str(m0) + " " + str(m1) + "\n"
+		print ("SET_MEMORY " + str(m0) + " " + str(m1) + "\n")

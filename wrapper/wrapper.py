@@ -165,3 +165,5 @@ class Protocol:
 t, obj = Protocol.readInput()
 print(obj)
 print(t)
+print("ANT_NEW 4")
+Protocol.comment("test")
