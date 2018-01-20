@@ -1,13 +1,17 @@
 from wrapper import Protocol
 
-t, obj = Protocol.readInput()
 
-if t == 'ANT':
-	ant = obj
+def antIa(ant):
 	# ANT PROGRAM
-	
-elif t == 'NEST':
-	nest = obj
+
+def nestIA(ant):
 	# NEST PROGRAM
-	
-Protocol.exit()
+
+while 1:
+	nameEntity, entity = Protocol.readInput()
+	if nameEntity == 'ANT':
+		antIA(entity)
+	elif nameEntity == 'NEST':
+		nest = obj
+		nestIA(entity)
+	Protocol.exit()
