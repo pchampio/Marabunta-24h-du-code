@@ -7,18 +7,18 @@ Un jeu multi-agents avec des fourmis
 
 
 `newAnt(type)`  
-Permet de creer une nouvelle fourmi  
-@param : le type de la fourmi a creer   
+Create a new ant  
+@param : ant's type   
 
 `antOut(type, food, m0, m1)`  
-Permet de faire sortir une fourmi d'un certain type ave cune quantite de nourriture. On peut aussi lui donner ses valeurs m0 et m1  
-@param type : type de la fourmi  
-@param food : quantite de nourriture  
-@param m0 : 1 octet  
-@param m1 : 1 octet  
+Ant go out!!! We give her food, m0, m1 and her type
+@param type : ant's type  
+@param food : food amount  
+@param m0 : 1 byte
+@param m1 : 1 byte  
 
-`memory(memory)`   
-Modifie la memoire de la nest.  
+`memory(memory)`  
+Modify nest memory 
 @param memory : array length must be equal to 20     
 
 
