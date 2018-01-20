@@ -1,17 +1,22 @@
 import operator
 from utils import *
 from wrapper import Protocol
+from Comment import comment
+import time
+
 # import Protocol
 
 ANT_ECLAIREUR = 0
 ANT_RAMASSEUR = 1
 PH_NEED_RECHARGE = 30
+STAMINA_NEED_EAT = 100
+DISTANCE_NEED_PUT_PH = 90
 
-
-t, obj = Protocol.readInput()
 
 def antIA(ant):
 	# ANT PROGRAM
+
+	#  time.sleep(1)
 
 	if ant.type == ANT_ECLAIREUR:
 		idPathStart = ant.m1
@@ -27,15 +32,9 @@ def antIA(ant):
 		# needRechargePhs = les phs qui sont < PH_NEED_RECHARGE
 		nearest = compareKey("area", phs, operator.eq, "NEAR")
 		needRefuel = compareKey("persistance", nearest, operator.lt, PH_NEED_RECHARGE)
-		if len(needRefuel) >= 0:
-			ant.rechargePheromone(needRefuel[0]["id"])
-			return
-
-		# nearestPh = la ph la plus proche dans
-		
-		if nearestPh:
+		if len(needRefuel) > 0:
 			ant.say("LE PHEROMONE A BESOIN DE SE FAIRE RECHARGER")
-			ant.rechargePheromone(nearestPh["id"])
+			ant.rechargePheromone(needRefuel[0]["id"])
 			return
 
 		# farPh = la phs la plus loin
@@ -45,31 +44,54 @@ def antIA(ant):
 			ant.moveTo(farPh["id"])
 			idPathStart -= 1
 			ant.setMemory(idPathStart, gotFood)
-			ant.memory()
+			ant.commitMemory()
 			return
 
 		# partie calcul min distance
-		# distance = min(SEE_NEST.dist, SEE_PH.dist && SEE_PH.type == idPathStart - 1)
 		phs    = compareKey("id", ant.arrSeePheromone, operator.eq, idPathStart - 1)
-		phDist = minMaxKey("dist", phs, min)
 
 		nestsFriendly = compareKey("friend", ant.arrSeeNest, operator.eq, "FRIEND")
-		nestDist = minMaxKey("dist", nestsFriendly, min)
 
-		distance = min(nestDist, phDist)
+		if nestsFriendly and phs:
+			phDist = minMaxKey("dist", phs, min)
+			nestDist = minMaxKey("dist", nestsFriendly, min)
 
-		if distance > DISTANCE_NEED_PUT_PH:
-			ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP")
-			ant.putPheromone(idPathStart)
-			idPathStart += 1
-			ant.setMemory(idPathStart, gotFood)
-			ant.memory()
-			return
+			distance = min(nestDist, phDist)
+
+			if distance["dist"] > DISTANCE_NEED_PUT_PH:
+				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP")
+				ant.putPheromone(idPathStart)
+				idPathStart += 1
+				ant.setMemory(idPathStart, gotFood)
+				ant.commitMemory()
+				return
+		if phs:
+			distance = minMaxKey("dist", phs, min)
+
+			if distance["dist"] > DISTANCE_NEED_PUT_PH:
+				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP")
+				ant.putPheromone(idPathStart)
+				idPathStart += 1
+				ant.setMemory(idPathStart, gotFood)
+				ant.commitMemory()
+				return
+
+		if nestsFriendly:
+			distance = minMaxKey("dist", nestsFriendly, min)
+
+			if distance["dist"] > DISTANCE_NEED_PUT_PH:
+				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP")
+				ant.putPheromone(idPathStart)
+				idPathStart += 1
+				ant.setMemory(idPathStart, gotFood)
+				ant.commitMemory()
+				return
+
 
 
 		if len(ant.arrSeeFood) > 0:
 			nearestFoodSrc = ant.arrSeeFood.min()
-			
+
 			if nearestFoodSrc == FAR:
 				ant.say("ON SE DIRIGE VERS LA BOUFFE")
 				ant.moveTo(nearestFoodSrc["id"])
@@ -78,12 +100,12 @@ def antIA(ant):
 				ant.say("ON RECUPERE DE LA BOUFFE")
 				ant.collect(nearestFoodSrc.id, nearestFoodSrc.amount)
 				ant.setMemory(idPathStart, True)
-				ant.memory()
+				ant.commitMemory()
 
 			return
-		
+
+		ant.explore()
 		ant.say("ON A RIEN TROUVE, ON EXPLORE")
-		ant.explore
 
 		return
 
@@ -97,7 +119,7 @@ def antIA(ant):
 			nests = ant.arrSeeNest()
 			if len(nests) >= 0:
 				nearestNest = minMaxKey("dist", nests, min)
-				
+
 				if nearestNest["area"] == "NEAR":
 					ant.say("ON A TROUVE LA NEST, ON RENTRE DEDANS")
 					ant.nest(nearestNest["id"])
@@ -110,32 +132,32 @@ def antIA(ant):
 
 				pathID -= 1
 				ant.setMemory(pathID, goingBack)
-				ant.memory()
+				ant.commitMemory()
 
 				destination = ant.arrSeeNest()
 				plusLoin    = compareKey("id", destination, operator.eq, pathID)
-		
+
 
 				#if plusLoin["area"] == "NEAR":
 				ant.say("ON TROUVE LE CHEMIN")
 				ant.moveTo(plusLoin[0]["id"])
 				#else:
-					
 
-				#ant.moveTo(plusLoin["id"])			
+
+				#ant.moveTo(plusLoin["id"])
 				return
 
 		else:
-		
+
 			foods = ant.arrSeeFood()
 			if len(foods) >= 0:
 				nearestFood = minMaxKey("dist", foods, min)
-				
+
 				if nearestFood["area"] == "NEAR":
 					ant.say("ON A RECUPERE DE LA BOUFFE")
 					ant.collect(nearestFood["id"], nearestFood["amount"])
 					ant.setMemory(pathID, True)
-					ant.memory()
+					ant.commitMemory()
 				else:
 					ant.say("ON SE RAPPROCHE DE LA BOUFFE")
 					ant.moveTo(nearestFood["id"])
@@ -149,10 +171,10 @@ def antIA(ant):
 
 				pathID += 1
 				ant.setMemory(pathID, goingBack)
-				ant.memory()
+				ant.commitMemory()
 			else:
 				ant.say("ERREUR PAS DE PHEROMONE")
-	
+
 			return
 
 
@@ -163,23 +185,27 @@ def antIA(ant):
 def nestIA(nest):
 	# NEST PROGRAM
 
+	comment(str(nest))
+
 	if nest.memory[0] == 0:
 		nest.setMemoryLocation(0, 1)
-		nest.memory()
+		nest.commitMemory()
 		nest.newAnt(0)
 
 	elif nest.memory[0] == 1:
 		nest.setMemoryLocation(0, 2)
-		nest.memory()
-		nest.antOut(0, 50, 0, 0)	
-	
+		nest.commitMemory()
+		nest.antOut(0, 2, 0, 0)
+
 
 	return
 
 while True:
 	nameEntity, entity = Protocol.readInput()
+	comment(nameEntity)
 	if nameEntity == 'ANT':
 		antIA(entity)
 	elif nameEntity == 'NEST':
 		nestIA(entity)
+
 	Protocol.exit()
