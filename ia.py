@@ -30,6 +30,12 @@ if t == 'ANT':
 		if gotFood == True:
 			ant.moveTo(farPh["id"])
 			Protocol.exit()
+
+		# partie calcul min distance
+
+		if len(ant.arrSeeFood) > 0:
+			Protocol.exit()
+			#if ant.arrSeeFood
 			
 		
 	elif ant.type == AntType.ramasseuse:
