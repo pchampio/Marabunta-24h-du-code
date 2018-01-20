@@ -11,7 +11,6 @@ from Comment import comment
 
 
 class Protocol:
-	MAX_LENGTH = 100 - 10
 
 	@classmethod
 	def exit(cls):
@@ -78,7 +77,6 @@ class Protocol:
 				ant.setSeeNest(ident, zone, dist, friend)
 
 			elif cmd == 'SEE_FOOD':
-				print(line)
 				ident, zone, dist, amount = args
 				ident = int(ident)
 				dist = int(dist)
