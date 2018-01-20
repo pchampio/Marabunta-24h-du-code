@@ -12,11 +12,25 @@ if t == 'ANT':
 		idPath  = ant.m1
 		gotFood = ant.m2 
 
-		if ant.stamina < MIN_STAMINA_BEFORE_EAT:
+		# NEED STAMINA
+		if ant.stamina < STAMINA_NEED_EAT:
 			ant.eat(1)
 			Protocol.exit()
 		
-		ph = ant.arrSeePheromone
+		phs = ant.arrSeePheromone
+		# needRechargePhs = les phs qui sont < PH_NEED_RECHARGE
+		# nearestPh = la ph la plus proche dans 
+		if nearestPh:
+			ant.rechargePheromone(nearestPh["id"])
+			Protocol.exit()
+		
+
+		# farPh = la phs la plus loin
+		# HOME RETURN
+		if gotFood == True:
+			ant.moveTo(farPh["id"])
+			Protocol.exit()
+			
 		
 	elif ant.type == AntType.ramasseuse:
 		Protocol.exit()
