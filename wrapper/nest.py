@@ -13,7 +13,7 @@ class Nest:
 
 
 	def __str__(self):
-		return "Food : " + str(self.food) + "\nMemory : " + str(self.memory) + "\nAntType : " + str(arrAntType) +  "\nAnt : " + str(self.arrAnt) + "\n"
+		return "Food : " + str(self.food) + " -- Memory : " + str(self.memory) + " -- AntType : " + str(self.arrAntType) +  " -- Ant : " + str(self.arrAnt) + " --"
 
 
 	def say(self, msg):
