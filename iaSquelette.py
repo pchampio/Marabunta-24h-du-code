@@ -12,6 +12,5 @@ while True:
 	if nameEntity == 'ANT':
 		antIA(entity)
 	elif nameEntity == 'NEST':
-		nest = obj
 		nestIA(entity)
 	Protocol.exit()
