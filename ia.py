@@ -48,6 +48,7 @@ def antIA(ant):
 			return
 
 		# partie calcul min distance
+		ant.say("test")
 		phs    = compareKey("id", ant.arrSeePheromone, operator.eq, idPathStart - 1)
 
 		nestsFriendly = compareKey("friend", ant.arrSeeNest, operator.eq, "FRIEND")
@@ -59,9 +60,8 @@ def antIA(ant):
 			distance = min(nestDist, phDist)
 
 			if distance["dist"] > DISTANCE_NEED_PUT_PH:
-				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP")
+				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP 2")
 				ant.putPheromone(idPathStart)
-				idPathStart += 1
 				ant.setMemory(idPathStart, gotFood)
 				ant.commitMemory()
 				return
@@ -69,7 +69,7 @@ def antIA(ant):
 			distance = minMaxKey("dist", phs, min)
 
 			if distance["dist"] > DISTANCE_NEED_PUT_PH:
-				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP")
+				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP phs")
 				ant.putPheromone(idPathStart)
 				idPathStart += 1
 				ant.setMemory(idPathStart, gotFood)
@@ -80,11 +80,11 @@ def antIA(ant):
 			distance = minMaxKey("dist", nestsFriendly, min)
 
 			if distance["dist"] > DISTANCE_NEED_PUT_PH:
-				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP")
+				ant.say("ON A BESOIN DE PLACER UN PHEROMONE, ON S ELOIGNE TROP nest" + str(idPathStart))
 				ant.putPheromone(idPathStart)
-				idPathStart += 1
-				ant.setMemory(idPathStart, gotFood)
-				ant.commitMemory()
+				#  idPathStart += 1
+				#  ant.setMemory(idPathStart, gotFood)
+				#  ant.commitMemory()
 				return
 
 
