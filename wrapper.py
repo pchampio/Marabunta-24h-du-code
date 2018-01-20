@@ -3,7 +3,7 @@ from ant import Ant
 from nest import Nest
 
 sys.stdout.flush()
-
+DEBUG = False
 class Protocol:
 	MAX_LENGTH = 100 - 10
 
@@ -14,6 +14,8 @@ class Protocol:
 	# @staticmethod
 	@classmethod
 	def comment(cls, msg):
+		if not DEBUG:
+			return
 		while len(msg) >= cls.MAX_LENGTH:
 			part1 = msg[0:cls.MAX_LENGTH]
 			msg = msg[cls.MAX_LENGTH:]
