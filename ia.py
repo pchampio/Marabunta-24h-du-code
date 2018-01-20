@@ -49,13 +49,18 @@ def antIA(ant):
 
 		# partie calcul min distance
 		ant.say("test")
-		phs    = compareKey("id", ant.arrSeePheromone, operator.eq, idPathStart - 1)
+		phs    = compareKey("type", ant.arrSeePheromone, operator.eq, idPathStart)
 
 		nestsFriendly = compareKey("friend", ant.arrSeeNest, operator.eq, "FRIEND")
+		#  ant.say("nestsFriendly" + str(nestsFriendly))
+		#  ant.say("phs" + str(phs))
+		#  ant.say("idPathStart" + str(idPathStart))
+		#  ant.say("arrSeePheromone" + str(ant.arrSeePheromone))
 
 		if nestsFriendly and phs:
 			phDist = minMaxKey("dist", phs, min)
 			nestDist = minMaxKey("dist", nestsFriendly, min)
+                        ant.say("pierre" + )
 
 			distance = min(nestDist, phDist)
 
@@ -76,6 +81,7 @@ def antIA(ant):
 				ant.commitMemory()
 				return
 
+		ant.say("dsfs" + str(len(phs)))
 		if nestsFriendly and len(phs) == 0:
 			distance = minMaxKey("dist", nestsFriendly, min)
 

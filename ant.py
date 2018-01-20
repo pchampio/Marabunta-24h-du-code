@@ -41,8 +41,8 @@ class Ant:
 	def setFood(self, quantity):
 		self.food = quantity
 
-	def setSeePheromone(self, uniq, area, dist, persistance):
-		self.arrSeePheromone.append({"id": uniq, "area" : area, "dist" : dist, "persistance" : persistance})
+	def setSeePheromone(self, uniq, area, dist, type2, persistance):
+                self.arrSeePheromone.append({"id": uniq, "area" : area, "dist" : dist, "persistance" : persistance, "type": type2})
 
 	def setSeeAnt(self, uniq, area, dist, friend, stamina):
 		self.arrSeeAnt.append({"id": uniq, "area" : area, "dist" : dist, "friend" : friend, "stamina" : stamina})

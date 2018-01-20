@@ -61,7 +61,7 @@ class Protocol:
 				dist = int(dist)
 				typePheromone = int(typePheromone)
 				persistance = int(persistance)
-				ant.setSeePheromone(ident, zone, typePheromone, persistance)
+				ant.setSeePheromone(ident, zone, dist, typePheromone, persistance)
 
 			elif cmd == 'SEE_ANT':
 				ident, zone, dist, friend, stamina = args
