@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 testProg.py < /dev/stdin
+python3 ia.py < /dev/stdin
