@@ -6,27 +6,28 @@ Un jeu multi-agents avec des fourmis
 # Nest
 
 
-`newAnt(type)`
-Permet de creer une nouvelle fourmi
-@param : le type de la fourmi a creer 
+`newAnt(type)`  
+Create a new ant  
+@param : ant's type   
 
-`antOut(type, food, m0, m1)`
-Permet de faire sortir une fourmi d'un certain type ave cune quantite de nourriture. On peut aussi lui donner ses valeurs m0 et m1
-@param type : type de la fourmi
-@param food : quantite de nourriture
-@param m0 : 1 octet
-@param m1 : 1 octet
+`antOut(type, food, m0, m1)`  
+Ant go out!!! We give her food, m0, m1 and her type
+@param type : ant's type  
+@param food : food amount  
+@param m0 : 1 byte
+@param m1 : 1 byte  
 
-`memory(memory)` 
-Modifie la memoire de la nest.
-@param memory : tableaux de taille 20
+`memory(memory)`  
+Modify nest memory 
+@param memory : array length must be equal to 20     
 
-# Ant
 
-`explore(self)`
-Ant go explore!!!
+# Ant  
 
-`turn(angle)`  
+`explore(self)`  
+Ant go explore!!!  
+
+`turn(angle)`   
 Turn the ant around  
 @param angle : angle  
 
@@ -64,21 +65,21 @@ Throphallaxy between two ants
 Convert food to stamina  
 @param quantity :  Quantity to convert  
 
-`nest(id)`
-Enter in a nest
-@param id : nest's id
+`nest(id)`  
+Enter in a nest  
+@param id : nest's id  
 	
-`attack(id, strength)`
-Attack another ant
-@param id : victim's id
+`attack(id, strength)`  
+Attack another ant  
+@param id : victim's id  
 @param strength : Strength of the attack
 
 
-`suicide()`
-Kill the ant
+`suicide()`  
+Kill the ant  
 	
-`memory(m0=self.m1, m1=self.m2)`
-By default the value of the ant.
-Change the ant's memory
-@param m0 : 1st byte
-@param m1 : 2nd byte
+`memory(m0=self.m1, m1=self.m2)`  
+By default the value of the ant.  
+Change the ant's memory  
+@param m0 : 1st byte  
+@param m1 : 2nd byte  
