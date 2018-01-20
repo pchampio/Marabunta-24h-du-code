@@ -54,40 +54,40 @@ class Ant:
 	## Actions
 
 	def explore(self):
-		print ("EXPLORE\n")
+		print ("EXPLORE")
 
 	def turn(self, angle):
-		print ("TURN " + str(angle) + "\n")
+		print ("TURN " + str(angle))
 
 	def moveTo(self, uniq):
-		print ("MOVE_TO " + str(uniq) + "\n")
+		print ("MOVE_TO " + str(uniq) )
 
 	def putPheromone(self, t):
-		print ("PUT_PHEROMONE " + str(type) + "\n")
+		print ("PUT_PHEROMONE " + str(type))
 
 	def changePheromone(self, uniq, t):
-		print ("CHANGE_PHEROMONE " + str(uniq) + " " + str(t) + "\n")
+		print ("CHANGE_PHEROMONE " + str(uniq) + " " + str(t))
 
 	def rechargePheromone(self, uniq):
-		print ("RECHARGE_PHEROMONE " + str(uniq) + "\n")
+		print ("RECHARGE_PHEROMONE " + str(uniq))
 
 	def collect(self, uniq, quantity):
-		print ("COLLECT " + str(uniq) + " " + str(quantity) + "\n")
+		print ("COLLECT " + str(uniq) + " " + str(quantity))
 
 	def doTropha(self, uniq, quantity):
-		print ("DO_THROPHALLAXIS " + str(uniq) + " " + str(quantity) + "\n")
+		print ("DO_THROPHALLAXIS " + str(uniq) + " " + str(quantity))
 
 	def eat(self, quantity):
-		print ("EAT " + str(quantity) + "\n")
+		print ("EAT " + str(quantity))
 
 	def nest(self, uniq):
-		print ("NEST " + str(uniq) + "\n")
+		print ("NEST " + str(uniq))
 
 	def attack(self, uniq, strength):
-		print ("ATTACK " + str(uniq) + " " + str(strength) + "\n")
+		print ("ATTACK " + str(uniq) + " " + str(strength))
 
 	def suicide(self):
-		print ("SUICIDE\n")
+		print ("SUICIDE")
 
 	def memory(self, m0, m1):
-		print ("SET_MEMORY " + str(m0) + " " + str(m1) + "\n")
+		print ("SET_MEMORY " + str(m0) + " " + str(m1))
