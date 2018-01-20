@@ -83,7 +83,6 @@ class Protocol:
 				ant.setSeeNest(ident, zone, dist, friend)
 
 			elif cmd == 'SEE_FOOD':
-				print(line)
 				ident, zone, dist, amount = args
 				ident = int(ident)
 				dist = int(dist)
