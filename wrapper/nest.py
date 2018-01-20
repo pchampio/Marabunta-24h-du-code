@@ -41,13 +41,13 @@ class Nest:
 
 	def newAnt(self, t):
 		setAntIn(t,0,0)
-		print ("ANT_NEW " + str(t) + "\n")
+		print ("ANT_NEW " + str(t))
 
 	def antOut(self, t, food, m0, m1):
-		print ("ANT_OUT " + str(t) + " " + str(food) + " " + str(m0) + " " + str(m1) + "\n")
+		print ("ANT_OUT " + str(t) + " " + str(food) + " " + str(m0) + " " + str(m1))
 
 	def memory(self, memory):
 		arr = [str(s) for s in memory]
-		print ("SET_MEMORY" + " ".join(arr) + "\n")
+		print ("SET_MEMORY" + " ".join(arr))
 
 

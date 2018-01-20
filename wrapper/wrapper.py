@@ -1,8 +1,12 @@
 import sys
 from ant import Ant
+from nest import Nest
 class Protocol:
-	MAX_LENGTH = 100 - 2
+	MAX_LENGTH = 100 - 3
 
+	@classmethod
+	def endOfCommunication():
+		print("END")
 
 	# @staticmethod
 	@classmethod
@@ -97,68 +101,29 @@ class Protocol:
 			line = sys.stdin.readline().split()
 		return ant
 
-
-
-
 	@classmethod
 	def readNest(cls):
 		cls.comment("reading nest...")
 		line = sys.stdin.readline().split()
 		nest = Nest()
 		while line[0] != 'END':
-			cmd = line[0]
-			args = line[1:]
-			if cmd == 'TYPE':
-				t = int(args[0])
-				ant.setType(t)
+		if cmd == 'STOCK':
+			qtt = args[0]
+			qtt = int(qtt)
+			nest.setFood(qtt)
 
-			elif cmd == 'MEMORY':
-				m1, m2 = [int(v) for v in args]
-				ant.setMemory(m1, m2)
+		elif cmd == 'MEMORY':
+			tab_mem = [int(v) for v in args]
+			nest.setMemory(tab_mem)
 
-			elif cmd == 'ATTACKED':
-				ant.setAttacked()
+		elif cmd == 'ANT_COUNT':
+			typ, qtt = [int(v) for v in args]
+			nest.setMemory(typ, qtt)
 
-			elif cmd == 'STAMINA' :
-				stamina = int(args[0])
-				ant.setStamina(stamina)
+		elif cmd == 'ANT_IN':
+			typ, m1, m2 = [int(v) for v in args]
+			nest.setAntIn(typ, m1, m2)
 
-			elif cmd == 'STOCK':
-				food = int(args[0])
-				ant.setFood(food)
-
-			elif cmd == 'SEE_PHEROMONE':
-				ident, zone, typePheromone, persistance = args
-				ident = int(ident)
-				dist = int(dist)
-				typePheromone = int(typePheromone)
-				persistance = int(persistance)
-				ant.setSeePheromone(ident, zone, typePheromone, persistance)
-
-			elif cmd == 'SEE_ANT':
-				ident, zone, dist, friend, stamina = args
-				ident = int(ident)
-				dist = int(dist)
-				stamina = int(stamina)
-				ant.setSeeAnt(ident, zone, dist, friend)
-
-			elif cmd == 'SEE_NEST':
-				ident, zone, dist, friend = args
-				ident = int(ident)
-				dist = int(dist)
-				ant.setSeeNest(ident, zone, dist, friend)
-
-			elif cmd == 'SEE_FOOD':
-				print(line)
-				ident, zone, dist, amount = args
-				ident = int(ident)
-				dist = int(dist)
-				amount = int(amount)
-				ant.setSeeNest(ident, zone, dist, amount)
-			else:
-				cls.comment("unknow ant command")
-
-			line = sys.stdin.readline().split()
 		return ant
 
 
