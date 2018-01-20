@@ -1,4 +1,5 @@
 from wrapper import Protocol
+
 class Ant:
 	STAMINA_MAX = 10000
 	FOOD_MAX = 1000

@@ -2,8 +2,14 @@ import sys
 from ant import Ant
 from nest import Nest
 
+import platform
+
 sys.stdout.flush()
-DEBUG = False
+
+# the prod server is not on arch
+DEBUG = platform.linux_distribution()[0] == "arch"
+
+
 class Protocol:
 	MAX_LENGTH = 100 - 10
 

@@ -1,4 +1,5 @@
 from wrapper import Protocol
+
 class Nest:
 
 	def say(self, msg):

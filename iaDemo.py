@@ -3,6 +3,7 @@ from wrapper import Protocol
 def antIA(ant):
     # ANT PROGRAM
     ant.explore()
+    ant.say("coucou")
 
 def nestIA(nest):
     # NEST PROGRAM
