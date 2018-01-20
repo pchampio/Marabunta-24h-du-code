@@ -1,34 +1,26 @@
 import sys
 from ant import Ant
 from nest import Nest
+from Comment import comment
 
-sys.stdout.flush()
+
+
+# sys.stdout.flush()
+
+
+
 
 class Protocol:
-	MAX_LENGTH = 100 - 10
 
 	@classmethod
 	def exit(cls):
 		print("END")
 
-	# @staticmethod
-	@classmethod
-	def comment(cls, msg):
-		while len(msg) >= cls.MAX_LENGTH:
-			part1 = msg[0:cls.MAX_LENGTH]
-			msg = msg[cls.MAX_LENGTH:]
-			cls.commentMax(part1)
-
-		cls.commentMax(msg)
-
-	@classmethod
-	def commentMax(cls, msg):
-		print(": {}".format(msg))
-
 	@classmethod
 	def readInput(cls):
-		firstLine = sys.stdin.readline()
+		firstLine = input()
 		name = firstLine.split()[1]
+
 		obj = None
 		if name == 'ANT':
 			obj = cls.readAnt()
@@ -37,11 +29,9 @@ class Protocol:
 
 		return [name, obj]
 
-		# return data
-
 	@classmethod
 	def readAnt(cls):
-		line = sys.stdin.readline().split()
+		line = input().split()
 		ant = Ant()
 		while line[0] != 'END':
 			cmd = line[0]
@@ -87,7 +77,6 @@ class Protocol:
 				ant.setSeeNest(ident, zone, dist, friend)
 
 			elif cmd == 'SEE_FOOD':
-				print(line)
 				ident, zone, dist, amount = args
 				ident = int(ident)
 				dist = int(dist)
@@ -95,12 +84,12 @@ class Protocol:
 				ant.setSeeNest(ident, zone, dist, amount)
 
 
-			line = sys.stdin.readline().split()
+			line = input().split()
 		return ant
 
 	@classmethod
 	def readNest(cls):
-		line = sys.stdin.readline().split()
+		line = input().split()
 		nest = Nest()
 		while line[0] != 'END':
 			cmd = line[0]
@@ -116,12 +105,19 @@ class Protocol:
 
 			elif cmd == 'ANT_COUNT':
 				typ, qtt = [int(v) for v in args]
-				nest.setMemory(typ, qtt)
+				nest.setAntCount(typ, qtt)
 
 			elif cmd == 'ANT_IN':
 				typ, m1, m2 = [int(v) for v in args]
 				nest.setAntIn(typ, m1, m2)
 
-			line = sys.stdin.readline().split()
+			line = input().split()
 
 		return nest
+
+if __name__ == '__main__':
+	t, obj = Protocol.readInput()
+	comment(str(obj))
+	comment(str(t))
+	print("ANT_NEW 4")
+	Protocol.exit()

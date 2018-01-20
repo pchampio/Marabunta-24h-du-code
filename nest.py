@@ -1,6 +1,9 @@
+from Comment import comment
+
 class Nest:
-	STAMINA_MAX = 10000
-	FOOD_MAX = 1000
+
+	def say(self, msg):
+		comment(msg)
 
 	def __init__(self, ):
 		#Protocol.readAnt()
@@ -15,9 +18,6 @@ class Nest:
 	def __str__(self):
 		return "Food : " + str(self.food) + " -- Memory : " + str(self.memory) + " -- AntType : " + str(self.arrAntType) +  " -- Ant : " + str(self.arrAnt) + " --"
 
-
-	def say(self, msg):
-		Protocol.comment(msg)
 
 	## INFORMATION
 
@@ -40,14 +40,12 @@ class Nest:
 	## ACTIONS
 
 	def newAnt(self, t):
-		setAntIn(t,0,0)
+		self.setAntIn(t,0,0)
 		print ("ANT_NEW " + str(t))
 
 	def antOut(self, t, food, m0, m1):
 		print ("ANT_OUT " + str(t) + " " + str(food) + " " + str(m0) + " " + str(m1))
 
-	def memory(self, memory=self.memory):
-		arr = [str(s) for s in memory]
-		print ("SET_MEMORY" + " ".join(arr))
-
-
+	def commitMemory(self):
+		arr = [str(s) for s in self.memory]
+		print ("SET_MEMORY " + " ".join(arr))
