@@ -1,5 +1,8 @@
 class Nest:
 
+	def say(self, msg):
+		Protocol.comment(msg)
+
 	def __init__(self, ):
 		#Protocol.readAnt()
 
