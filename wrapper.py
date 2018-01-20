@@ -5,7 +5,7 @@ class Protocol:
 	MAX_LENGTH = 100 - 3
 
 	@classmethod
-	def exit():
+	def exit(cls):
 		print("END")
 		exit()
 
@@ -128,3 +128,5 @@ class Protocol:
 t, obj = Protocol.readInput()
 Protocol.comment(str(obj))
 Protocol.comment(str(t))
+print("ANT_NEW 4")
+Protocol.exit()
