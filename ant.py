@@ -65,7 +65,7 @@ class Ant:
 		print ("MOVE_TO " + str(uniq) )
 
 	def putPheromone(self, t):
-		print ("PUT_PHEROMONE " + str(type))
+		print ("PUT_PHEROMONE " + str(t))
 
 	def changePheromone(self, uniq, t):
 		print ("CHANGE_PHEROMONE " + str(uniq) + " " + str(t))
@@ -92,4 +92,4 @@ class Ant:
 		print ("SUICIDE")
 
 	def commitMemory(self):
-		print ("SET_MEMORY " + str(self.m0) + " " + str(self.m1))
+		print ("SET_MEMORY " + str(self.m1) + " " + str(self.m2))
