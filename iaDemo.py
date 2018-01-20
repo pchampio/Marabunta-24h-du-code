@@ -1,4 +1,5 @@
 from wrapper import Protocol
+from Comment import comment
 
 def antIA(ant):
     # ANT PROGRAM
@@ -8,7 +9,7 @@ def antIA(ant):
 def nestIA(nest):
     # NEST PROGRAM
 
-    Protocol.comment(str(nest))
+    comment(str(nest))
 
     if nest.memory[0] == 0:
         nest.setMemoryLocation(0, 1)

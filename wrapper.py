@@ -125,7 +125,7 @@ class Protocol:
 
 if __name__ == '__main__':
 	t, obj = Protocol.readInput()
-	Protocol.comment(str(obj))
-	Protocol.comment(str(t))
+	comment(str(obj))
+	comment(str(t))
 	print("ANT_NEW 4")
 	Protocol.exit()
