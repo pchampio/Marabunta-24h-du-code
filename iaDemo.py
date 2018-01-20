@@ -2,7 +2,7 @@ from wrapper import Protocol
 
 def antIA(ant):
     # ANT PROGRAM
-    ant.explorer()
+    ant.explore()
 
 def nestIA(nest):
     # NEST PROGRAM
