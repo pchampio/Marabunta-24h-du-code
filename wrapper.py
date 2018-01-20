@@ -11,7 +11,6 @@ from Comment import comment
 
 
 class Protocol:
-	MAX_LENGTH = 100 - 10
 
 	@classmethod
 	def exit(cls):
