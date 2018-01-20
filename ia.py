@@ -200,15 +200,12 @@ def nestIA(nest):
 
 	return
 
-try:
-	while True:
-		nameEntity, entity = Protocol.readInput()
-		comment(nameEntity)
-		if nameEntity == 'ANT':
-			antIA(entity)
-		elif nameEntity == 'NEST':
-			nestIA(entity)
+while True:
+	nameEntity, entity = Protocol.readInput()
+	comment(nameEntity)
+	if nameEntity == 'ANT':
+		antIA(entity)
+	elif nameEntity == 'NEST':
+		nestIA(entity)
 
-		Protocol.exit()
-except Exception, error:
-	comment(str(error))
+	Protocol.exit()
