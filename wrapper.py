@@ -5,7 +5,7 @@ from nest import Nest
 sys.stdout.flush()
 
 class Protocol:
-	MAX_LENGTH = 100 - 3
+	MAX_LENGTH = 100 - 10
 
 	@classmethod
 	def exit(cls):
@@ -126,9 +126,3 @@ class Protocol:
 			line = sys.stdin.readline().split()
 
 		return nest
-
-t, obj = Protocol.readInput()
-Protocol.comment(str(obj))
-Protocol.comment(str(t))
-print("ANT_NEW 4")
-Protocol.exit()
