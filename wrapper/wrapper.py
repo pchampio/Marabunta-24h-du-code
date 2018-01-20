@@ -29,13 +29,9 @@ class Protocol:
 		name = firstLine.split()[1]
 		obj = None
 		if name == 'ANT':
-			print("readAnt")
 			obj = cls.readAnt()
 		elif name == 'NEST':
-			print("readNest")
 			obj = cls.readNest()
-		else:
-			print("unknown")
 
 		return [name, obj]
 
@@ -43,7 +39,6 @@ class Protocol:
 
 	@classmethod
 	def readAnt(cls):
-		cls.comment("reading ant...")
 		line = sys.stdin.readline().split()
 		ant = Ant()
 		while line[0] != 'END':
@@ -103,7 +98,6 @@ class Protocol:
 
 	@classmethod
 	def readNest(cls):
-		cls.comment("reading nest...")
 		line = sys.stdin.readline().split()
 		nest = Nest()
 		while line[0] != 'END':
@@ -128,11 +122,9 @@ class Protocol:
 
 			line = sys.stdin.readline().split()
 
-		return ant
+		return nest
 
 
 t, obj = Protocol.readInput()
-print(obj)
-print(t)
-print("ANT_NEW 4")
-Protocol.comment("test")
+Protocol.comment(str(obj))
+Protocol.comment(str(t))

@@ -19,7 +19,7 @@ class Ant:
 		self.arrSeeFood = []
 
 	def __str__(self):
-		return "m1 : " + str(self.m1) + "\nm2 : " + str(self.m2) + "\ntype : " + str(self.type) + "\nstamina : " + str(self.stamina) + "\nfood : " + str(self.food) + "\nisAttacked? : " + str(self.isAttacked) + "\nsee Pheromone : " + str(self.arrSeePheromone) + "\nsee Ant : " + str(self.arrSeeAnt) + "\nSee Nest : " + str(self.arrSeeNest) + "\nSee Food : " + str(self.arrSeeFood) + "\n"
+		return "m1 : " + str(self.m1) + " -- 2 : " + str(self.m2) + " -- type : " + str(self.type) + " -- stamina : " + str(self.stamina) + " -- food : " + str(self.food) + " -- isAttacked? : " + str(self.isAttacked) + " -- see Pheromone : " + str(self.arrSeePheromone) + " -- see Ant : " + str(self.arrSeeAnt) + " -- See Nest : " + str(self.arrSeeNest) + " -- See Food : " + str(self.arrSeeFood)
 
 	## Informations
 
