@@ -1,7 +1,7 @@
 # the prod server is not on arch
 import platform
 DEBUG = platform.linux_distribution()[0] == "arch"
-def comment(cls, msg):
+def comment(msg):
 	if not DEBUG:
 		return
 	while len(msg) >= 98:
@@ -11,5 +11,5 @@ def comment(cls, msg):
 
 	commentMax(msg)
 
-def commentMax(cls, msg):
+def commentMax(msg):
 	print(": {}".format(msg))
