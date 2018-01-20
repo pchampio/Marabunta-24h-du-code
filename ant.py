@@ -1,4 +1,4 @@
-from wrapper import Protocol
+from Comment import comment
 
 class Ant:
 	STAMINA_MAX = 10000
@@ -6,7 +6,7 @@ class Ant:
 
 
 	def say(self, msg):
-		Protocol.comment(msg)
+		comment(msg)
 
 	def __init__(self):
 		#self.m1

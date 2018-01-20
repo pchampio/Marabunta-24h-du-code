@@ -1,9 +1,9 @@
-from wrapper import Protocol
+from Comment import comment
 
 class Nest:
 
 	def say(self, msg):
-		Protocol.comment(msg)
+		comment(msg)
 
 	def __init__(self, ):
 		#Protocol.readAnt()
@@ -18,9 +18,6 @@ class Nest:
 	def __str__(self):
 		return "Food : " + str(self.food) + " -- Memory : " + str(self.memory) + " -- AntType : " + str(self.arrAntType) +  " -- Ant : " + str(self.arrAnt) + " --"
 
-
-	def say(self, msg):
-		Protocol.comment(msg)
 
 	## INFORMATION
 

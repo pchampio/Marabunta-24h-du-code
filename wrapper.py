@@ -1,6 +1,7 @@
 import sys
 from ant import Ant
 from nest import Nest
+from Comment import comment
 
 import platform
 
@@ -16,22 +17,6 @@ class Protocol:
 	@classmethod
 	def exit(cls):
 		print("END")
-
-	# @staticmethod
-	@classmethod
-	def comment(cls, msg):
-		if not DEBUG:
-			return
-		while len(msg) >= cls.MAX_LENGTH:
-			part1 = msg[0:cls.MAX_LENGTH]
-			msg = msg[cls.MAX_LENGTH:]
-			cls.commentMax(part1)
-
-		cls.commentMax(msg)
-
-	@classmethod
-	def commentMax(cls, msg):
-		print(": {}".format(msg))
 
 	@classmethod
 	def readInput(cls):
