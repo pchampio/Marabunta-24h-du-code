@@ -5,8 +5,9 @@ class Protocol:
 	MAX_LENGTH = 100 - 3
 
 	@classmethod
-	def endOfCommunication():
+	def exit():
 		print("END")
+		exit()
 
 	# @staticmethod
 	@classmethod
