@@ -4,8 +4,10 @@ def antIa(ant):
 	# ANT PROGRAM
 	ant.explorer()
 
-def nestIA(ant):
+def nestIA(nest):
 	# NEST PROGRAM
+
+	Protocol.comment(str(nest))
 
 	if nest.memory[0] == 0:
 		nest.setMemoryLocation(0, 1)

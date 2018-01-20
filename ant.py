@@ -89,5 +89,5 @@ class Ant:
 	def suicide(self):
 		print ("SUICIDE")
 
-	def memory(self, m0=self.m1, m1=self.m2):
-		print ("SET_MEMORY " + str(m0) + " " + str(m1))
+	def memory(self):
+		print ("SET_MEMORY " + str(self.m0) + " " + str(self.m1))

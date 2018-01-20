@@ -116,7 +116,7 @@ class Protocol:
 
 			elif cmd == 'ANT_COUNT':
 				typ, qtt = [int(v) for v in args]
-				nest.setMemory(typ, qtt)
+				nest.setAntCount(typ, qtt)
 
 			elif cmd == 'ANT_IN':
 				typ, m1, m2 = [int(v) for v in args]
