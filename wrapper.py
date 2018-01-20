@@ -3,7 +3,7 @@ from ant import Ant
 from nest import Nest
 from Comment import comment
 
-import platform
+
 
 sys.stdout.flush()
 

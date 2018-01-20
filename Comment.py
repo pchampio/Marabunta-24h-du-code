@@ -1,4 +1,5 @@
 # the prod server is not on arch
+import platform
 DEBUG = platform.linux_distribution()[0] == "arch"
 def comment(cls, msg):
 	if not DEBUG:
