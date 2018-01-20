@@ -4,7 +4,7 @@ from wrapper import Protocol
 def antIa(ant):
 	# ANT PROGRAM
 
-def nestIA(ant):
+def nestIA(nest):
 	# NEST PROGRAM
 
 while True:
