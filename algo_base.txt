@@ -73,6 +73,11 @@ BEGIN ANT
 		EXPLORE
 
 	SINON SI TYPE == ramasseuse
+	
+		pathId    = m1
+		goingBack = m2
+
+
 
 
 	FSI
