@@ -41,8 +41,8 @@ class Ant:
 	def setFood(self, quantity):
 		self.food = quantity
 
-	def setSeePheromone(self, uniq, area, dist, persistance):
-		self.arrSeePheromone.append({"id": uniq, "area" : area, "dist" : dist, "persistance" : persistance})
+	def setSeePheromone(self, uniq, area, dist, type2, persistance):
+                self.arrSeePheromone.append({"id": uniq, "area" : area, "dist" : dist, "persistance" : persistance, "type": type2})
 
 	def setSeeAnt(self, uniq, area, dist, friend, stamina):
 		self.arrSeeAnt.append({"id": uniq, "area" : area, "dist" : dist, "friend" : friend, "stamina" : stamina})
@@ -65,7 +65,7 @@ class Ant:
 		print ("MOVE_TO " + str(uniq) )
 
 	def putPheromone(self, t):
-		print ("PUT_PHEROMONE " + str(type))
+		print ("PUT_PHEROMONE " + str(t))
 
 	def changePheromone(self, uniq, t):
 		print ("CHANGE_PHEROMONE " + str(uniq) + " " + str(t))
@@ -91,5 +91,5 @@ class Ant:
 	def suicide(self):
 		print ("SUICIDE")
 
-	def memory(self):
-		print ("SET_MEMORY " + str(self.m0) + " " + str(self.m1))
+	def commitMemory(self):
+		print ("SET_MEMORY " + str(self.m1) + " " + str(self.m2))

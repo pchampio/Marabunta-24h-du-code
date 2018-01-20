@@ -56,12 +56,12 @@ class Protocol:
 				ant.setFood(food)
 
 			elif cmd == 'SEE_PHEROMONE':
-				ident, zone, typePheromone, persistance = args
+				ident, zone, dist, typePheromone, persistance = args
 				ident = int(ident)
 				dist = int(dist)
 				typePheromone = int(typePheromone)
 				persistance = int(persistance)
-				ant.setSeePheromone(ident, zone, typePheromone, persistance)
+				ant.setSeePheromone(ident, zone, dist, typePheromone, persistance)
 
 			elif cmd == 'SEE_ANT':
 				ident, zone, dist, friend, stamina = args
