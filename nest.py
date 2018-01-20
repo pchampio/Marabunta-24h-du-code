@@ -46,7 +46,7 @@ class Nest:
 	def antOut(self, t, food, m0, m1):
 		print ("ANT_OUT " + str(t) + " " + str(food) + " " + str(m0) + " " + str(m1))
 
-	def memory(self, memory):
+	def memory(self, memory=self.memory):
 		arr = [str(s) for s in memory]
 		print ("SET_MEMORY" + " ".join(arr))
 
