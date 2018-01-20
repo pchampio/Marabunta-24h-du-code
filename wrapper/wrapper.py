@@ -18,35 +18,40 @@ class Protocol:
 	def commentMax(cls, msg):
 		print(":{}".format(msg))
 
-	@staticmethod
-	def readInput():
+	@classmethod
+	def readInput(cls):
 		data = sys.stdin.readlines()
-		return data
+		name = data[0].split()[1]
+		obj = None
+		if name == 'ANT':
+			print("readAnt")
+			obj = cls.readAnt(data[1:])
+		elif name == 'NEST':
+			print("readNest")
+			obj = cls.readNest(data[1:])
+		else:
+			print("unknown")
+
+		return [name, obj]
+
+		# return data
 
 	@classmethod
-	def readAnt(cls):
-		data = cls.readInput
-		print "Counted", len(data), "lines."
+	def readAnt(cls, data):
+		print("reading ant...")
+
+
+	@classmethod
+	def readNest(cls, data):
+		print("reading nest...")
 
 
 
 
+# a = Ant()
+# a.say("hello world and everything")
 
 
-class Ant:
-	STAMINA_MAX = 10000
-	FOOD_MAX = 1000
-
-	def __init__(self, ):
-		# Protocol.readAnt()
-		self.char2 = c1
-		self.char1 = c2
-
-
-
-	def say(self, msg):
-		Protocol.comment(msg)
-
-
-a = Ant()
-a.say("hello world and everything")
+t, obj = Protocol.readInput()
+print(obj)
+print(t)
