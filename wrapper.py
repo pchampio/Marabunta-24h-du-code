@@ -29,8 +29,8 @@ class Protocol:
 	def readInput(cls):
 		firstLine = input()
 
-		while(not firstLine):
-		    firstLine = sys.stdin.readline()
+		# while(not firstLine):
+			# firstLine = sys.stdin.readline()
 
 		#  print(firstLine)
 		#  print("==\n\n")
