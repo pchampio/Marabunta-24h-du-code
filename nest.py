@@ -1,6 +1,4 @@
 class Nest:
-	STAMINA_MAX = 10000
-	FOOD_MAX = 1000
 
 	def __init__(self, ):
 		#Protocol.readAnt()
@@ -49,5 +47,3 @@ class Nest:
 	def memory(self, memory=self.memory):
 		arr = [str(s) for s in memory]
 		print ("SET_MEMORY" + " ".join(arr))
-
-
