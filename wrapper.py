@@ -27,8 +27,15 @@ class Protocol:
 
 	@classmethod
 	def readInput(cls):
-		firstLine = sys.stdin.readline()
+		firstLine = input()
+
+		while(not firstLine):
+		    firstLine = sys.stdin.readline()
+
+		#  print(firstLine)
+		#  print("==\n\n")
 		name = firstLine.split()[1]
+
 		obj = None
 		if name == 'ANT':
 			obj = cls.readAnt()

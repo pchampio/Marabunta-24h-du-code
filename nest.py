@@ -38,12 +38,12 @@ class Nest:
 	## ACTIONS
 
 	def newAnt(self, t):
-		setAntIn(t,0,0)
+		self.setAntIn(t,0,0)
 		print ("ANT_NEW " + str(t))
 
 	def antOut(self, t, food, m0, m1):
 		print ("ANT_OUT " + str(t) + " " + str(food) + " " + str(m0) + " " + str(m1))
 
-	def memory(self):
+	def commitMemory(self):
 		arr = [str(s) for s in self.memory]
-		print ("SET_MEMORY" + " ".join(arr))
+		print ("SET_MEMORY " + " ".join(arr))
