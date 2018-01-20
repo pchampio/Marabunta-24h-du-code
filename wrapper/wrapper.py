@@ -2,7 +2,7 @@ import sys
 from ant import Ant
 from nest import Nest
 class Protocol:
-	MAX_LENGTH = 100 - 2
+	MAX_LENGTH = 100 - 3
 
 	@classmethod
 	def endOfCommunication():
