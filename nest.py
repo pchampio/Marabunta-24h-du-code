@@ -1,4 +1,5 @@
 from Comment import comment
+from utils import *
 
 class Nest:
 
@@ -49,3 +50,8 @@ class Nest:
 	def commitMemory(self):
 		arr = [str(s) for s in self.memory]
 		print ("SET_MEMORY " + " ".join(arr))
+
+	## Other
+
+	def getAntCount(self, t):
+		return compareKey("type",self.arrAntType,operator.eq,t)[0].get("quantity",0)
