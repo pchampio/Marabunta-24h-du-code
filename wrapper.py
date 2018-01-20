@@ -1,11 +1,14 @@
 import sys
 from ant import Ant
 from nest import Nest
+
+sys.stdout.flush()
+
 class Protocol:
 	MAX_LENGTH = 100 - 3
 
 	@classmethod
-	def exit():
+	def exit(cls):
 		print("END")
 		exit()
 
@@ -21,7 +24,7 @@ class Protocol:
 
 	@classmethod
 	def commentMax(cls, msg):
-		print(": {}".format(msg), flush=True)
+		print(": {}".format(msg))
 
 	@classmethod
 	def readInput(cls):
@@ -124,7 +127,8 @@ class Protocol:
 
 		return nest
 
-
 t, obj = Protocol.readInput()
 Protocol.comment(str(obj))
 Protocol.comment(str(t))
+print("ANT_NEW 4")
+Protocol.exit()
