@@ -108,22 +108,22 @@ class Protocol:
 		line = sys.stdin.readline().split()
 		nest = Nest()
 		while line[0] != 'END':
-		if cmd == 'STOCK':
-			qtt = args[0]
-			qtt = int(qtt)
-			nest.setFood(qtt)
+		    if cmd == 'STOCK':
+			    qtt = args[0]
+			    qtt = int(qtt)
+			    nest.setFood(qtt)
 
-		elif cmd == 'MEMORY':
-			tab_mem = [int(v) for v in args]
-			nest.setMemory(tab_mem)
+		    elif cmd == 'MEMORY':
+			    tab_mem = [int(v) for v in args]
+			    nest.setMemory(tab_mem)
 
-		elif cmd == 'ANT_COUNT':
-			typ, qtt = [int(v) for v in args]
-			nest.setMemory(typ, qtt)
+		    elif cmd == 'ANT_COUNT':
+			    typ, qtt = [int(v) for v in args]
+			    nest.setMemory(typ, qtt)
 
-		elif cmd == 'ANT_IN':
-			typ, m1, m2 = [int(v) for v in args]
-			nest.setAntIn(typ, m1, m2)
+		    elif cmd == 'ANT_IN':
+			    typ, m1, m2 = [int(v) for v in args]
+			    nest.setAntIn(typ, m1, m2)
 
 		return ant
 
