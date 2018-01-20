@@ -1,4 +1,5 @@
 from wrapper import Protocol
+from Comment import comment
 
 
 def antIA(ant):
