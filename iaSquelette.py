@@ -7,7 +7,7 @@ def antIa(ant):
 def nestIA(ant):
 	# NEST PROGRAM
 
-while 1:
+while True:
 	nameEntity, entity = Protocol.readInput()
 	if nameEntity == 'ANT':
 		antIA(entity)
