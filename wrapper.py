@@ -125,3 +125,10 @@ class Protocol:
 			line = sys.stdin.readline().split()
 
 		return nest
+
+if __name__ == '__main__':
+	t, obj = Protocol.readInput()
+	Protocol.comment(str(obj))
+	Protocol.comment(str(t))
+	print("ANT_NEW 4")
+	Protocol.exit()
