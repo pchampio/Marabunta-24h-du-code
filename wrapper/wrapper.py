@@ -16,7 +16,7 @@ class Protocol:
 
 	@classmethod
 	def commentMax(cls, msg):
-		print(":{}".format(msg))
+		print(": {}".format(msg), flush=True)
 
 	@classmethod
 	def readInput(cls):
