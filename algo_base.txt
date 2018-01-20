@@ -78,7 +78,26 @@ BEGIN ANT
 		goingBack = m2
 
 		SI goingBack == vrai
-			plusLoin = 	
+			plusLoin = le PH le plus loin
+			MOVE_TO plusLoin.id
+			return
+		ELSE
+			SI SEE_FOOD
+				SI SEE_FOOD.zone == FAR
+					MOVE_TO SEE_FOOD.id
+					return
+				FSI
+
+				COLLECT SEE_FOOD.id SEE_FOOD.amount
+				goingBack = true (set memory)
+				return
+			ELSE
+				
+				plusLoin = le PH le plus loin
+				MOVE_TO plusLoin.id
+				return
+				
+			FSI
 		END
 
 

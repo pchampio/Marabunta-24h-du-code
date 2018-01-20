@@ -1,11 +1,13 @@
 from wrapper import Protocol
 
 
-def antIa(ant):
+def antIA(ant):
 	# ANT PROGRAM
+	return
 
 def nestIA(ant):
 	# NEST PROGRAM
+	return
 
 while True:
 	nameEntity, entity = Protocol.readInput()

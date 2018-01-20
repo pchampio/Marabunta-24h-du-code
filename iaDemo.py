@@ -1,6 +1,6 @@
 from wrapper import Protocol
 
-def antIa(ant):
+def antIA(ant):
 	# ANT PROGRAM
 	ant.explorer()
 
