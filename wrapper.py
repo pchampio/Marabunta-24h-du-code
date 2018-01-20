@@ -30,7 +30,7 @@ class Protocol:
 		firstLine = input()
 
 		# while(not firstLine):
-			# firstLine = sys.stdin.readline()
+			# firstLine = input()
 
 		#  print(firstLine)
 		#  print("==\n\n")
@@ -46,7 +46,7 @@ class Protocol:
 
 	@classmethod
 	def readAnt(cls):
-		line = sys.stdin.readline().split()
+		line = input().split()
 		ant = Ant()
 		while line[0] != 'END':
 			cmd = line[0]
@@ -100,12 +100,12 @@ class Protocol:
 				ant.setSeeNest(ident, zone, dist, amount)
 
 
-			line = sys.stdin.readline().split()
+			line = input().split()
 		return ant
 
 	@classmethod
 	def readNest(cls):
-		line = sys.stdin.readline().split()
+		line = input().split()
 		nest = Nest()
 		while line[0] != 'END':
 			cmd = line[0]
@@ -127,7 +127,7 @@ class Protocol:
 				typ, m1, m2 = [int(v) for v in args]
 				nest.setAntIn(typ, m1, m2)
 
-			line = sys.stdin.readline().split()
+			line = input().split()
 
 		return nest
 
