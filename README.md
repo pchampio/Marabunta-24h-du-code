@@ -26,43 +26,43 @@ Modifie la memoire de la nest.
 `explore(self)`
 Ant go explore!!!
 
-`turn(angle)`
-Turn the ant around
-@param angle : angle
+`turn(angle)`  
+Turn the ant around  
+@param angle : angle  
 
-`moveTo(id)`
-Move the ant towards the id 
-@param id : Objective's id 
-
-
-`putPheromone(`type)`
-Place down pheromone
-@param type : type of the pheromone
-
-`changePheromone(id, type)`
-Change the type of the pheromone
-@param id : Changing Pheromone's id
-@param type :  new pheromone type
+`moveTo(id)`  
+Move the ant towards the id   
+@param id : Objective's id   
 
 
-`rechargePheromone(id)`
-Reload the pheromone
-@param id : pheromone's id 
+`putPheromone(`type)`  
+Place down pheromone  
+@param type : type of the pheromone  
 
-`collect(id, quantity)`
-Harvest food
-@param id : Food Pile's id
-@param quantity : Amount of food to harvest
-
-`doTropha(id, quantity)`
-Throphallaxy between two ants
-@param id : Receiving ant's id
-@param quantity :  Amount of food to give
+`changePheromone(id, type)`  
+Change the type of the pheromone  
+@param id : Changing Pheromone's id  
+@param type :  new pheromone type  
 
 
-`eat(quantity)`
-Convert food to stamina
-@param quantity :  Quantity to convert
+`rechargePheromone(id)`  
+Reload the pheromone  
+@param id : pheromone's id   
+
+`collect(id, quantity)`  
+Harvest food  
+@param id : Food Pile's id  
+@param quantity : Amount of food to harvest  
+
+`doTropha(id, quantity)`  
+Throphallaxy between two ants  
+@param id : Receiving ant's id  
+@param quantity :  Amount of food to give  
+
+
+`eat(quantity)`  
+Convert food to stamina  
+@param quantity :  Quantity to convert  
 
 `nest(id)`
 Enter in a nest
