@@ -126,7 +126,8 @@ def antIA(ant):
 		idPathStart = max(lastIdPaht)
 
 
-		gotFood     = (ant.m2 == 1)
+		gotFood     = (ant.m2 == 1 or ant.m2 == 2)
+		needMove = (ant.m2 == 1)
 
 		# NEED STAMINA
 		if ant.stamina < STAMINA_NEED_EAT:
@@ -169,8 +170,19 @@ def antIA(ant):
 				return
 
 			ant.say("ON SE DIRIGE VERS LE CHEMIN DU RETOUR")
-			ant.moveTo(pers_min)
+			
+			if needMove:
+				ant.setMemory(ant.m1, 2)
+				ant.moveTo(pers_min)
+			else :
+			
+				ant.setMemory(ant.m1,1)
+				nearestPhero = [ x for x in ant.arrSeePheromone if x["distance"] == 0][0]
+				ant.rechargePheromone(nearestPhero)
+			
+			ant.commitMemory()
 			return
+
 
 
 		ant.say("arrSeeFood" + str(ant.arrSeeFood))
@@ -181,7 +193,7 @@ def antIA(ant):
 			if nearestFoodSrc:
 				ant.say("ON RECUPERE DE LA BOUFFE")
 				ant.collect(nearestFoodSrc[0]["id"],  min(nearestFoodSrc[0]["amount"], ant.FOOD_MAX))
-				ant.setMemory(ant.m1, 1)
+				ant.setMemory(ant.m1, 2)
 				ant.commitMemory()
 				return
 
