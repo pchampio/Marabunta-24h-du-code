@@ -205,7 +205,7 @@ def nestIA(nest):
 		return
 
 	if randint(0,30) < 2:
-		nest.memory[NB_ANT_CREATED] -= nest.memory[NB_ANT_CREATED]/10
+		nest.memory[NB_ANT_CREATED] -= nest.memory[NB_ANT_CREATED]//10
 		nest.commitMemory()
 		nest.newAnt(0)
 		return

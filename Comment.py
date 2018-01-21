@@ -1,7 +1,7 @@
 # the prod server is not on arch
 import platform
 DEBUG = platform.linux_distribution()[0] == "arch"
-DEBUG = False
+#  DEBUG = False
 
 class bcolors:
     HEADER = '\033[95m'

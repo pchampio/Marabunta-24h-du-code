@@ -57,7 +57,7 @@ class Ant:
 
 	def explore(self):
 		if self.requireStamina(1) == False: return
-		
+
 		print ("EXPLORE")
 
 
@@ -66,7 +66,7 @@ class Ant:
 			self.say("ERROR: ANGLE MUST BETWEEN -180 and 180")
 			return
 		if self.requireStamina(1) == False: return
-		
+
 		print ("TURN " + str(angle))
 
 	def moveTo(self, uniq):
@@ -78,7 +78,7 @@ class Ant:
 			self.say("ERROR: PHEROMONE TYPE SHOULD BE IN [0, 1023], CURRENTLY " + str(t))
 			return
 		if self.requireStamina(3) == False: return
-		
+
 		print ("PUT_PHEROMONE " + str(t))
 
 	def changePheromone(self, uniq, t):
@@ -93,7 +93,7 @@ class Ant:
 			self.say("ERROR: PHEROMONE TYPE SHOULD BE IN [0, 1023], CURRENTLY " + str(t))
 			return
 		if self.requireStamina(2) == False: return
-		
+
 		print ("CHANGE_PHEROMONE " + str(uniq) + " " + str(t))
 
 	def rechargePheromone(self, uniq):
@@ -105,7 +105,7 @@ class Ant:
 			self.say("ERROR: PHEROMONE " + str(uniq) + " IS NOT NEAR THE ANT")
 			return
 		if self.requireStamina(1) == False: return
-		
+
 		print ("RECHARGE_PHEROMONE " + str(uniq))
 
 	def collect(self, uniq, quantity):
@@ -145,10 +145,10 @@ class Ant:
 		if not dest:
 			self.say("ERROR: " + str(uniq) + " NOT FOUND IN NESTS AROUND ANT")
 			return
-		if test[0]["area"] != "NEAR":
+		if dest[0]["area"] != "NEAR":
 			self.say("ERROR: " + str(uniq) + " NOT NEAR THE ANT")
 			return
-		if test[0]["friend"] != "FRIEND":
+		if dest[0]["friend"] != "FRIEND":
 			self.say("ERROR: " + str(uniq) + " NOT FRIEND WITH THE ANT")
 			return
 		if self.requireStamina(2) == False: return
@@ -183,7 +183,7 @@ class Ant:
 	def requireStamina(self, neededStamina):
 		# print error if not enough stamina, return false in this case
 		# return True if enough stamina, does not print anything
-		if self.stamina < strength:
-			self.say("ERROR: NOT ENOUGH STAMINA, I HAVE " + self.stamina + " NEEDS " + strength)
+		if self.stamina < neededStamina:
+			self.say("ERROR: NOT ENOUGH STAMINA, I HAVE " + self.stamina + " NEEDS " + neededStamina)
 			return False
 		return True
