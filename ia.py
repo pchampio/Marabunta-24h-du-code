@@ -3,6 +3,7 @@ from utils import *
 from wrapper import Protocol
 from Comment import comment
 import time
+from random import randint
 
 # import Protocol
 
@@ -25,13 +26,19 @@ def antIA(ant):
 			lastIdPaht.append(ph["type"])
 		idPathStart = max(lastIdPaht)
 
+		if idPathStart > ant.m1:
+			ant.say("SUICIDE")
+			ant.suicide()
+			return
+
+
 
 		gotFood     = (ant.m2 == 1)
 
 		# NEED STAMINA
 		if ant.stamina < STAMINA_NEED_EAT:
 			ant.say("ON BOUFFE, ON NEED DE LA STAMINA")
-			ant.eat(1)
+			ant.suicide()
 			return
 
 		phs = ant.arrSeePheromone
@@ -94,8 +101,8 @@ def antIA(ant):
 
 			if nearestFoodSrc:
 				ant.say("ON RECUPERE DE LA BOUFFE")
-				ant.collect(nearestFoodSrc[0]["id"],  min(nearestFoodSrc[0]["amount"], ant.FOOD_MAX))
-				ant.setMemory(ant.m1, 1)
+				ant.collect(nearestFoodSrc[0]["id"],  min(nearestFoodSrc[0]["amount"], ant.FOOD_MAX) - 1)
+				ant.setMemory(idPathStart + 10, 1)
 				ant.commitMemory()
 				return
 
@@ -188,19 +195,39 @@ def antIA(ant):
 
 	return
 
+NB_ANT_CREATED = 0
+KILL_AT_PH = 1
+
 def nestIA(nest):
 	# NEST PROGRAM
 
 	comment(str(nest))
 
+	if nest.memory[KILL_AT_PH] == 0:
+		nest.memory[KILL_AT_PH] = 20
+		nest.commitMemory()
+
+	if nest.arrAnt:
+		nest.memory[KILL_AT_PH] = int(nest.arrAnt[0]["m1"] * 1.1)
+		nest.commitMemory()
+
+
 	if nest.arrAntType:
-		nest.antOut(0, 0, 0, 0)
+		nest.antOut(0, 0, nest.memory[KILL_AT_PH], 0)
 		return
 
-	if nest.memory[0] < 5:
-		nest.memory[0] += 1
+	if nest.memory[NB_ANT_CREATED] < (nest.food/10) / (nest.memory[NB_ANT_CREATED] + 1):
+		nest.memory[NB_ANT_CREATED] += 1
 		nest.commitMemory()
 		nest.newAnt(0)
+		return
+
+	if randint(0,40) < 2:
+		nest.memory[NB_ANT_CREATED] -= nest.memory[NB_ANT_CREATED]//10
+		nest.memory[KILL_AT_PH] = int(nest.memory[KILL_AT_PH]+1 * 1.5)
+		nest.commitMemory()
+		nest.newAnt(0)
+		return
 
 
 while True:
