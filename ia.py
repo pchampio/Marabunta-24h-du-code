@@ -26,7 +26,7 @@ def antIA(ant):
 			lastIdPaht.append(ph["type"])
 		idPathStart = max(lastIdPaht)
 
-		if idPathStart > 20:
+		if idPathStart > 40:
 			ant.say("SUICIDE")
 			ant.suicide()
 			return
