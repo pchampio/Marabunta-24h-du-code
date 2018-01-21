@@ -1,28 +1,26 @@
 # Marabunta-24h-du-code
 Un jeu multi-agents avec des fourmis
-# test communication: T2 OK,
+
+## Python wrappers simple documentation:
+### Nest:
+
+- **`newAnt(type)`**
+	- Create a new ant  
+	- `@param type` : ant's type   
 
 
-# Nest
+- **`antOut(type, food, m0, m1)`**
+	- Ant go out!!! We give her food, m0, m1 and her type
+	- `@param type` : ant's type  
+	- `@param food` : food amount  
+	- `@param m0` : 1 byte
+	- `@param m1` : 1 byte  
 
+- **`memory(memory)`**
+	- Modify nest memory 
+	- `@param memory` : array length must be equal to 20     
 
-`newAnt(type)`  
-Create a new ant  
-@param : ant's type   
-
-`antOut(type, food, m0, m1)`  
-Ant go out!!! We give her food, m0, m1 and her type
-@param type : ant's type  
-@param food : food amount  
-@param m0 : 1 byte
-@param m1 : 1 byte  
-
-`memory(memory)`  
-Modify nest memory 
-@param memory : array length must be equal to 20     
-
-
-# Ant  
+### Ant:
 
 `explore(self)`  
 Ant go explore!!!  
