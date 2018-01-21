@@ -136,6 +136,12 @@ def antIA(ant):
 				return
 
 
+		#  s = sorted(ant.arrSeePheromone, key = lambda x: (x["type"], x["persistance"]))
+		#  if s and randint(0, 1000) < 2:
+			#  ant.moveTo(s[0]["id"])
+			#  return
+
+		#  ant.say("arrSeePheromone ==" + str(ant.arrSeePheromone))
 		ant.explore()
 		ant.say("ON A RIEN TROUVE, ON EXPLORE")
 
