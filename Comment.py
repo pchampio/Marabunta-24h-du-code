@@ -13,15 +13,15 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-def comment(msg):
+def comment(msg, color=bcolors.FAIL):
 	if not DEBUG:
 		return
 	while len(msg) >= 80:
 		part1 = msg[0:80]
 		msg = msg[80:]
-		commentMax(part1)
+		commentMax(part1, color)
 
-	commentMax(msg)
+	commentMax(msg, color)
 
-def commentMax(msg):
-	print(": " + bcolors.FAIL + "{}".format(msg) + bcolors.ENDC)
+def commentMax(msg, color):
+	print(": " + color + "{}".format(msg) + bcolors.ENDC)

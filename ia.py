@@ -1,7 +1,7 @@
 import operator
 from utils import *
 from wrapper import Protocol
-from Comment import comment
+from Comment import comment, bcolors
 import time
 from random import randint
 
@@ -26,13 +26,25 @@ def antIA(ant):
 			lastIdPaht.append(ph["type"])
 		idPathStart = max(lastIdPaht)
 
-		if idPathStart > ant.m1:
+		if ant.stamina < STAMINA_NEED_EAT and ant.food > 0:
+			ant.say("ant-eat")
+			ant.eat(1)
+			return
+
+		gotFood     = (ant.m2 == 1)
+
+		if idPathStart > ant.m1 and not gotFood:
 			ant.say("SUICIDE")
 			ant.suicide()
 			return
 
+<<<<<<< HEAD
 		gotFood     = (ant.m2 == 1 or ant.m2 == 2)
 		needMove = (ant.m2 == 1)
+=======
+
+
+>>>>>>> d1464607c3400abd0ca952f891823d6fe2ed2949
 
 		# NEED STAMINA
 		if ant.stamina < STAMINA_NEED_EAT:
@@ -179,16 +191,16 @@ def antIA(ant):
 				return
 
 			ant.say("ON SE DIRIGE VERS LE CHEMIN DU RETOUR")
-			
+
 			if needMove:
 				ant.setMemory(ant.m1, 2)
 				ant.moveTo(pers_min)
 			else :
-			
+
 				ant.setMemory(ant.m1,1)
 				nearestPhero = [ x for x in ant.arrSeePheromone if x["distance"] == 0][0]
 				ant.rechargePheromone(nearestPhero)
-			
+
 			ant.commitMemory()
 			return
 
@@ -222,29 +234,31 @@ KILL_AT_PH = 1
 def nestIA(nest):
 	# NEST PROGRAM
 
-	comment(str(nest))
+	comment(str(nest), bcolors.OKBLUE)
 
 	if nest.memory[KILL_AT_PH] == 0:
-		nest.memory[KILL_AT_PH] = 20
+		nest.memory[KILL_AT_PH] = 70
 		nest.commitMemory()
 
 	if nest.arrAnt:
-		nest.memory[KILL_AT_PH] = int(nest.arrAnt[0]["m1"] * 1.1)
+		nest.memory[KILL_AT_PH] = int(nest.arrAnt[0]["m1"] * 1.3)
 		nest.commitMemory()
 
 
 	if nest.arrAntType:
-		nest.antOut(0, 0, nest.memory[KILL_AT_PH], 0)
+		nest.antOut(0, 3, nest.memory[KILL_AT_PH], 0)
 		return
 
-	if nest.memory[NB_ANT_CREATED] < (nest.food/10) / (nest.memory[NB_ANT_CREATED] + 1):
-		nest.memory[NB_ANT_CREATED] += 1
+	if nest.memory[NB_ANT_CREATED] < 1:
+		comment("capitalize create ant", bcolors.OKGREEN)
+		nest.memory[NB_ANT_CREATED] += 2
 		nest.commitMemory()
 		nest.newAnt(0)
 		return
 
-	if randint(0,40) < 2:
-		nest.memory[NB_ANT_CREATED] -= nest.memory[NB_ANT_CREATED]//10
+	elif randint(0, 100) < 1:
+		comment("random create ant", bcolors.OKGREEN)
+		nest.memory[NB_ANT_CREATED] = 1
 		nest.memory[KILL_AT_PH] = int(nest.memory[KILL_AT_PH]+1 * 1.5)
 		nest.commitMemory()
 		nest.newAnt(0)
