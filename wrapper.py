@@ -68,7 +68,7 @@ class Protocol:
 				ident = int(ident)
 				dist = int(dist)
 				stamina = int(stamina)
-				ant.setSeeAnt(ident, zone, dist, friend)
+				ant.setSeeAnt(ident, zone, dist, friend, stamina)
 
 			elif cmd == 'SEE_NEST':
 				ident, zone, dist, friend = args
@@ -81,7 +81,7 @@ class Protocol:
 				ident = int(ident)
 				dist = int(dist)
 				amount = int(amount)
-				ant.setSeeNest(ident, zone, dist, amount)
+				ant.setSeeFood(ident, zone, dist, amount)
 
 
 			line = input().split()
