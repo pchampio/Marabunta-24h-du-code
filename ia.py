@@ -176,16 +176,16 @@ def antIA(ant):
 				return
 
 			ant.say("ON SE DIRIGE VERS LE CHEMIN DU RETOUR")
-			
+
 			if needMove:
 				ant.setMemory(ant.m1, 2)
 				ant.moveTo(pers_min)
 			else :
-			
+
 				ant.setMemory(ant.m1,1)
 				nearestPhero = [ x for x in ant.arrSeePheromone if x["distance"] == 0][0]
 				ant.rechargePheromone(nearestPhero)
-			
+
 			ant.commitMemory()
 			return
 
@@ -222,7 +222,7 @@ def nestIA(nest):
 	comment(str(nest), bcolors.OKBLUE)
 
 	if nest.memory[KILL_AT_PH] == 0:
-		nest.memory[KILL_AT_PH] = 20
+		nest.memory[KILL_AT_PH] = 50
 		nest.commitMemory()
 
 	if nest.arrAnt:
