@@ -20,6 +20,7 @@ def antIA(ant):
 	#  time.sleep(1)
 
 	if ant.type == ANT_ECLAIREUR:
+		comment("ANT_ECLAIREUR", bcolors.OKGREEN)
 		lastIdPaht = []
 		lastIdPaht.append(0)
 		for ph in ant.arrSeePheromone:
@@ -31,20 +32,14 @@ def antIA(ant):
 			ant.eat(1)
 			return
 
-		gotFood     = (ant.m2 == 1)
+		gotFood     = (ant.m2 == 1 or ant.m2 == 2)
+		needMove = (ant.m2 == 1)
 
 		if idPathStart > ant.m1 and not gotFood:
 			ant.say("SUICIDE")
 			ant.suicide()
 			return
 
-<<<<<<< HEAD
-		gotFood     = (ant.m2 == 1 or ant.m2 == 2)
-		needMove = (ant.m2 == 1)
-=======
-
-
->>>>>>> d1464607c3400abd0ca952f891823d6fe2ed2949
 
 		# NEED STAMINA
 		if ant.stamina < STAMINA_NEED_EAT:
@@ -87,16 +82,24 @@ def antIA(ant):
 				return
 
 			ant.say("ON SE DIRIGE VERS LE CHEMIN DU RETOUR")
-			
+
 			if needMove:
 				ant.setMemory(ant.m1, 2)
-				ant.moveTo(pers_min)
+				ant.moveTo(id_min)
 			else :
-			
-				ant.setMemory(ant.m1,1)
-				nearestPhero = [ x for x in ant.arrSeePheromone if x["distance"] == 0][0]
-				ant.rechargePheromone(nearestPhero)
-			
+
+				ant.setMemory(ant.m1, 1)
+				nearestPhero = [ x for x in ant.arrSeePheromone if x["area"] == "NEAR"]
+
+
+				if not nearestPhero:
+					ant.setMemory(ant.m1, 2)
+					ant.moveTo(id_min)
+				else:
+
+					a = minMaxKey("dist",nearestPhero,min)
+					ant.rechargePheromone(a)
+
 			ant.commitMemory()
 			return
 
@@ -139,16 +142,23 @@ def antIA(ant):
 		return
 
 	elif ant.type == ANT_RAMASSEUR:
+		comment("ANT_RAMASSEUR", bcolors.OKGREEN)
 
 		lastIdPaht = []
 		lastIdPaht.append(0)
 		for ph in ant.arrSeePheromone:
 			lastIdPaht.append(ph["persistance"])
 		idPathStart = max(lastIdPaht)
+		comment("idPathStart: " + str(idPathStart))
 
 
 		gotFood     = (ant.m2 == 1 or ant.m2 == 2)
 		needMove = (ant.m2 == 1)
+
+		#  if not gotFood:
+			#  ant.say("SUICIDE")
+			#  ant.suicide()
+			#  return
 
 		# NEED STAMINA
 		if ant.stamina < STAMINA_NEED_EAT:
@@ -178,6 +188,7 @@ def antIA(ant):
 			if pers_min > ph["persistance"]:
 				id_min = ph["id"]
 				pers_min = ph["persistance"]
+
 		if gotFood:
 
 			if ant.arrSeeNest and ant.arrSeeNest[0]["area"] == 'FAR':
@@ -197,12 +208,17 @@ def antIA(ant):
 				ant.moveTo(pers_min)
 			else :
 
-				ant.setMemory(ant.m1,1)
-				nearestPhero = [ x for x in ant.arrSeePheromone if x["distance"] == 0][0]
-				ant.rechargePheromone(nearestPhero)
+				ant.setMemory(ant.m1, 1)
+				nearestPhero = [ x for x in ant.arrSeePheromone if x["area"] == "NEAR"]
 
-			ant.commitMemory()
-			return
+
+				if not nearestPhero:
+					ant.setMemory(ant.m1, 2)
+					ant.moveTo(pers_min)
+				else:
+
+					a = minMaxKey("dist",nearestPhero,min)
+					ant.rechargePheromone(a)
 
 
 
@@ -223,6 +239,7 @@ def antIA(ant):
 				ant.moveTo(ant.arrSeeFood[0]["id"])
 				return
 
+		ant.moveTo(id_min)
 		return
 
 
@@ -241,28 +258,39 @@ def nestIA(nest):
 		nest.commitMemory()
 
 	if nest.arrAnt:
+		comment("capitalize create rama", bcolors.OKGREEN)
 		nest.memory[KILL_AT_PH] = int(nest.arrAnt[0]["m1"] * 1.3)
 		nest.commitMemory()
+		nest.newAnt(ANT_RAMASSEUR)
+		return
 
 
 	if nest.arrAntType:
-		nest.antOut(0, 3, nest.memory[KILL_AT_PH], 0)
+		nest.antOut(nest.arrAntType[0]["type"], 3, nest.memory[KILL_AT_PH], 0)
 		return
 
 	if nest.memory[NB_ANT_CREATED] < 1:
 		comment("capitalize create ant", bcolors.OKGREEN)
 		nest.memory[NB_ANT_CREATED] += 2
 		nest.commitMemory()
-		nest.newAnt(0)
+		nest.newAnt(ANT_ECLAIREUR)
 		return
 
-	elif randint(0, 100) < 1:
+	elif randint(0, 200) < 1:
 		comment("random create ant", bcolors.OKGREEN)
 		nest.memory[NB_ANT_CREATED] = 1
 		nest.memory[KILL_AT_PH] = int(nest.memory[KILL_AT_PH]+1 * 1.5)
 		nest.commitMemory()
-		nest.newAnt(0)
+		nest.newAnt(ANT_ECLAIREUR)
 		return
+
+	#  elif randint(0, 10) < 1:
+		#  comment("random create ant", bcolors.OKGREEN)
+		#  nest.memory[NB_ANT_CREATED] = 1
+		#  nest.memory[KILL_AT_PH] = int(nest.memory[KILL_AT_PH]+1 * 1.5)
+		#  nest.commitMemory()
+		#  nest.newAnt(ANT_RAMASSEUR)
+		#  return
 
 
 while True:
