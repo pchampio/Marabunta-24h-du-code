@@ -1,10 +1,10 @@
 
 puts "MAXTEAMS 1"
 puts "DURATION 60"
-puts "NEST_POSITION 0 0 0"
+puts "NEST_POSITION 0 90 0"
 puts "NEST_FOOD 0 200"
 
-0.upto(100) do |i|
+0.upto(50) do |i|
 
 	lati = rand(-45...45)
 	long = rand(-45...45)
