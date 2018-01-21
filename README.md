@@ -1,8 +1,8 @@
 # Marabunta-24h-du-code
-Un jeu multi-agents avec des fourmis
+> Un jeu multi-agents avec des fourmis
 
+## Pacman install
 
-pacman install
 ```
 pacman -S qt5
 pacman -S qt5-3d
@@ -20,6 +20,7 @@ make # dans planet
 # Then
 ./marabunta_engine -s ./scena5   "python3 ../../Marabunta-24h-du-code/ia.py" -h localhost -d 0
 ```
+
 
 ## Python wrappers simple documentation:
 ### Nest:
