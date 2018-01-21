@@ -136,7 +136,7 @@ def antIA(ant):
 				return
 
 
-		#  s = sorted(ant.arrSeePheromone, key = lambda x: (x["type"], x["persistance"]))
+		#  s = sorted(ant.arrSeePheromone, key = lambda x: (x["persistance"], x["type"]))
 		#  if s and randint(0, 1000) < 2:
 			#  ant.moveTo(s[0]["id"])
 			#  return
