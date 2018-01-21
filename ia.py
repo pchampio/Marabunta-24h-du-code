@@ -71,8 +71,6 @@ def antIA(ant):
 
 		# partie calcul min distance
 		ant.say("test")
-		phs    = compareKey("type", ant.arrSeePheromone, operator.eq, idPathStart)
-		ant.say("phs" + str(phs))
 		phs = [ x for x in phs if x["dist"] < DISTANCE_NEED_PUT_PH ]
 		ant.say("phs" + str(phs))
 
@@ -191,7 +189,7 @@ def nestIA(nest):
 		nest.antOut(0, 0, 0, 0)
 		return
 
-	if nest.memory[0] < 10:
+	if nest.memory[0] < 5:
 		nest.memory[0] += 1
 		nest.commitMemory()
 		nest.newAnt(0)
