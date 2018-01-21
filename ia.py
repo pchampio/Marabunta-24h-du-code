@@ -222,7 +222,7 @@ def nestIA(nest):
 	comment(str(nest), bcolors.OKBLUE)
 
 	if nest.memory[KILL_AT_PH] == 0:
-		nest.memory[KILL_AT_PH] = 50
+		nest.memory[KILL_AT_PH] = 70
 		nest.commitMemory()
 
 	if nest.arrAnt:
