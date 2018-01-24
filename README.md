@@ -1,6 +1,10 @@
 # Marabunta-24h-du-code
 > Un jeu multi-agents avec des fourmis
 
+# Demo
+
+![demo](./demo.gif)
+
 ## Pacman install
 
 ```
